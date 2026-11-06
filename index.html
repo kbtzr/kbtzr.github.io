@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jamie Maule - music &amp; audio producer and educator </title>
+<meta name="description" content="Jamie Maule is a sound designer, composer and music producer. Music and sound for film, theatre, galleries and podcasts, plus field recordings and workshops.">
+<meta name="theme-color" content="#EFE9DC">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jamie Maule: sound, composition and field recording">
+<meta property="og:description" content="Jamie Maule is a sound designer, composer and music producer. Music and sound for film, theatre, galleries and podcasts, plus field recordings and workshops.">
+<link rel="icon" href="assets/favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- Once you know your domain, uncomment these and fill in the address:
+<link rel="canonical" href="https://YOURDOMAIN/">
+<meta property="og:url" content="https://YOURDOMAIN/">
+<meta property="og:image" content="https://YOURDOMAIN/assets/preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+-->
+<style>
+
+  /* ============================================================
+     TOKENS
+     ============================================================ */
+  :root {
+    --bg:        #EFE9DC;
+    --bg-alt:    #E3DAC5;
+    --fg:        #26211A;
+    --fg-soft:   #574F41;
+    --tan-line:  #B9A17A;
+    --moss:      #55654B;
+    --rust:      #9C5B3C;
+
+    --font-serif: Georgia, 'Times New Roman', Times, serif;
+    --font-sans: system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+    --max: 760px;
+    --radius: 5px;   /* rounded corners on images */
+    color-scheme: light;
+  }
+
+  /* ============================================================
+     BASE
+     ============================================================ */
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  ::selection { background: var(--fg); color: var(--bg); }
+
+  :focus-visible {
+    outline: 2px solid var(--rust);
+    outline-offset: 3px;
+  }
+
+  img, svg { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ============================================================
+     INTRO (name, role, bio, photo)
+     ============================================================ */
+  header.intro { padding: 72px 0 40px; }
+
+  .intro h1 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(2.1rem, 6vw, 3rem);
+    line-height: 1.05;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .intro .role {
+    font-size: 0.98rem;
+    color: var(--fg-soft);
+    margin: 0 0 28px;
+  }
+
+  .intro .bio { max-width: 58ch; font-size: 1.02rem; }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 40px;
+    align-items: start;
+  }
+  .intro-image {
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--bg-alt);
+  }
+  .intro-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ============================================================
+     STICKY NAV / FILTER BUTTONS
+     ============================================================ */
+  nav.subnav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--tan-line);
+    border-bottom: 1px solid var(--tan-line);
+  }
+
+  nav.subnav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .genre-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    font-size: 0.9rem;
+  }
+
+  .genre-links button {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    padding: 2px 0;
+    font: inherit;
+    color: var(--fg-soft);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .genre-links button:hover { color: var(--moss); }
+  .genre-links button[aria-pressed="true"] {
+    color: var(--fg);
+    border-bottom-color: var(--fg);
+  }
+
+  .count { font-size: 0.85rem; color: var(--fg-soft); white-space: nowrap; }
+
+  /* ============================================================
+     WORK LIST
+     ============================================================ */
+  section.work { padding: 44px 0 80px; }
+
+  .work-block { scroll-margin-top: 80px; }
+  .work-block:not([hidden]) + .work-block { margin-top: 72px; }
+
+  .work-heading {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0 0 22px;
+    color: var(--fg-soft);
+  }
+
+  .block-note {
+    margin: -14px 0 22px;
+    font-size: 0.9rem;
+    color: var(--fg-soft);
+    max-width: 58ch;
+  }
+
+  .work-list { border-bottom: 1px solid var(--tan-line); }
+
+  details.project {
+    border-top: 1px solid var(--tan-line);
+    scroll-margin-top: 72px;
+  }
+
+  details.project summary {
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 4.8em 1fr auto 1.4em;
+    align-items: baseline;
+    gap: 14px;
+    padding: 18px 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  details.project summary::-webkit-details-marker { display: none; }
+
+  .proj-year {
+    font-size: 0.85rem;
+    color: var(--fg-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .proj-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0;
+  }
+  details.project:hover summary .proj-title { color: var(--rust); }
+
+  .proj-tags {
+    font-size: 0.82rem;
+    color: var(--moss);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .proj-toggle {
+    font-size: 1.1rem;
+    color: var(--fg-soft);
+    text-align: center;
+    transition: transform 0.2s ease;
+    justify-self: end;
+  }
+  details.project[open] .proj-toggle { transform: rotate(45deg); }
+
+  /* ============================================================
+     PROJECT CONTENT
+     ============================================================ */
+  .project-body {
+    padding: 4px 0 34px;
+    display: grid;
+    gap: 20px;
+  }
+
+  .project-media { margin: 0; }
+  .project-media img {
+    max-height: 440px;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    border-radius: var(--radius);
+  }
+
+  .project-text { max-width: 62ch; font-size: 0.98rem; }
+  .project-text p { margin: 0 0 12px; }
+  .project-text p:last-child { margin-bottom: 0; }
+  .project-text a {
+    text-decoration: none;
+    border-bottom: 1px solid var(--tan-line);
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .project-text a:hover { color: var(--rust); border-color: var(--rust); }
+  .todo { color: var(--rust); }   /* wrap a gap to fill in: <span class="todo">…</span> */
+
+  .project-role { font-size: 0.88rem; color: var(--fg-soft); }
+  .role-label { font-weight: 600; color: var(--fg); margin-right: 0.6em; }
+
+  .credits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px;
+    font-size: 0.9rem;
+    color: var(--fg-soft);
+  }
+  .credits li { margin: 2px 0; }
+
+  .project-text blockquote {
+    margin: 0 0 12px;
+    padding-left: 16px;
+    border-left: 2px solid var(--tan-line);
+    color: var(--fg-soft);
+    font-size: 0.92rem;
+  }
+  .project-text blockquote p { margin: 0 0 8px; }
+
+  .embed { display: grid; gap: 14px; }
+  .embed iframe { width: 100%; border: 0; }
+  .embed iframe, .embed audio { display: block; margin-left: auto; margin-right: auto; }
+  .embed iframe.bc { max-width: 480px; }
+  .embed iframe.video { aspect-ratio: 16 / 9; height: auto; }
+  .embed audio { width: 100%; max-width: 480px; }
+  .embed .sc-credit { font-size: 0.78rem; color: var(--fg-soft); margin-top: -8px; text-align: center; }
+  .embed .sc-credit a { text-decoration: none; border-bottom: 1px solid var(--tan-line); }
+
+  /* Dashed box shown when an image file is missing (kept after the
+     image styles above so it overrides them) */
+  .missing {
+    border: 1px dashed var(--tan-line);
+    border-radius: var(--radius);
+    background: repeating-linear-gradient(135deg, var(--bg-alt), var(--bg-alt) 10px, var(--bg) 10px, var(--bg) 20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    font-size: 0.82rem;
+    color: var(--fg-soft);
+  }
+  .missing::before { content: "Add image: " attr(data-file); }
+  .project-media.missing { aspect-ratio: 16 / 10; }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  footer {
+    border-top: 1px solid var(--tan-line);
+    padding: 40px 0 60px;
+    font-size: 0.9rem;
+    color: var(--fg-soft);
+  }
+  footer .copyright { margin-top: 24px; font-size: 0.8rem; }
+
+  .contact-row { display: flex; flex-wrap: wrap; gap: 18px; }
+  .contact-row a {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    color: var(--fg);
+    transition: color 0.15s ease;
+  }
+  .contact-row a:hover { color: var(--rust); }
+  .contact-row svg { width: 100%; height: 100%; }
+
+  /* ============================================================
+     BACKGROUND TEXTURE: heavy noise under dust and lint, fixed
+     behind the scrolling page. Change the opacity values to adjust.
+     ============================================================ */
+  body::before, body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+  body::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.15 0 0 0 0 0.12 0 0 0 0 0.08 0 0 0 1.6 -0.5'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23f)'/%3E%3C/svg%3E");
+    background-size: 240px;
+    opacity: 0.2;
+  }
+  body::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.15 0 0 0 0 0.12 0 0 0 0 0.08 0 0 0 22 -15.6'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23f)'/%3E%3C/svg%3E");
+    background-size: 420px;
+    opacity: 0.3;
+  }
+
+  /* ============================================================
+     SMALL SCREENS
+     ============================================================ */
+  @media (max-width: 640px) {
+    .intro-grid { grid-template-columns: 1fr; gap: 28px; }
+    .intro-image { max-width: 240px; }
+  }
+
+  @media (max-width: 560px) {
+    details.project summary {
+      grid-template-columns: 1fr 1.4em;
+      grid-template-areas:
+        "year  toggle"
+        "title title"
+        "tags  tags";
+      row-gap: 4px;
+    }
+    .proj-year   { grid-area: year; }
+    .proj-title  { grid-area: title; }
+    .proj-tags   { grid-area: tags; text-align: left; white-space: normal; }
+    .proj-toggle { grid-area: toggle; }
+
+    .genre-links { gap: 4px 16px; font-size: 0.86rem; }
+    .count { display: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<!--
+  ============================================================
+  HOW TO EDIT THIS SITE
+  - Each project is one <details class="project"> block, newest first.
+    Copy a block to add a project. The id becomes its shareable link
+    (yoursite.com/#mailros).
+  - data-genre drives the nav filter buttons. Allowed values: releases,
+    sound-composition, podcasts, field-recording, teaching (comma-separated).
+    The visible label in .proj-tags should match. To add a new genre, add
+    a button in the nav with a matching data-filter value.
+  - Podcasts sit in their own block (#podcast-block) below the main feed.
+    Add new podcast projects there, everything else in #main-block.
+  - Each project has a Role line at the top of its text.
+  - Only one project opens at a time (see the script at the bottom).
+  - Images live in an assets/ folder next to this file. Until the file
+    exists, a dashed placeholder shows the filename it expects.
+  - Embeds (Bandcamp, Spotify, SoundCloud, YouTube, Vimeo) are normal
+    iframes inside .embed. Bandcamp: use Share / Embed on the release
+    page to get the exact player height.
+  - To mark a gap to fill in later, wrap it in <span class="todo">...</span>
+    and it shows in red. Delete the span once it's filled in.
+  ============================================================
+-->
+
+<header class="intro">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div class="intro-text">
+        <h1>Jamie Maule</h1>
+        <p class="role">Music & audio producer and educator</p>
+        <p class="bio">
+          I make music and sound for film, theatre and galleries, and release music of my own under the alias Infra, as well as with others. I teach music production and spatial audio at the London College of Contemporary Music, and run field recording workshops. I also edit podcasts and work as an AV technician in the art world.
+        </p>
+      </div>
+      <!-- Intro image: any photo works, it is cropped to 4:5. Update the alt text to describe it. -->
+      <figure class="intro-image" data-file="assets/intro.jpg"><img src="assets/intro.jpg" alt="Photo of Jamie Maule" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+    </div>
+  </div>
+</header>
+
+<nav class="subnav">
+  <div class="wrap">
+    <div class="genre-links" role="group" aria-label="Filter projects">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="releases" aria-pressed="false">Releases</button>
+      <button type="button" data-filter="sound-composition" aria-pressed="false">Sound &amp; Composition</button>
+      <button type="button" data-filter="field-recording" aria-pressed="false">Field Recording</button>
+      <button type="button" data-filter="teaching" aria-pressed="false">Teaching</button>
+      <button type="button" data-filter="podcasts" aria-pressed="false">Podcasts</button>
+    </div>
+    <span class="count" id="count" aria-live="polite"></span>
+  </div>
+</nav>
+
+<main>
+  <section class="work">
+    <div class="wrap">
+      <div class="work-block" id="main-block">
+      <h2 class="work-heading">Projects</h2>
+
+      <div class="work-list">
+
+      <details class="project" id="cody-dock-workshops" data-genre="teaching,field-recording">
+        <summary>
+          <span class="proj-year">2026</span>
+          <h3 class="proj-title">Field Recording Workshops with Newham Music and Cody Dock</h3>
+          <span class="proj-tags">Teaching, Field Recording</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<figure class="project-media" data-file="assets/cody-dock-workshops.jpg"><img src="assets/cody-dock-workshops.jpg" alt="Field recording workshop at Cody Dock" loading="lazy" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Workshop leader, production, mixing</p>
+<p>I led three field recording workshops for Newham Music at Cody Dock, an urban nature reserve on the tidal River Lea. Participants were guided around the site by Cody Dock’s ecology team, recorded with professional equipment, then learned to shape their recordings into soundscapes in Logic.</p>
+<p>In parallel, I worked with Gabriella Noble, winner of the Newham Music River Recordings open call, to incorporate field recordings from the workshops into her piece, which was presented at Cody Dock’s community open day and the exhibition Art in the Docks.</p>
+<p>More: <a href="https://www.instagram.com/p/DcvlTyFDd2r/" target="_blank" rel="noopener">Cody Dock’s post on Instagram</a> and the <a href="https://www.youthmusic.org.uk/opportunities/free-field-recording-workshops" target="_blank" rel="noopener">workshop listing on Youth Music</a>.</p>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="mailros" data-genre="releases">
+        <summary>
+          <span class="proj-year">2026</span>
+          <h3 class="proj-title">Mailros</h3>
+          <span class="proj-tags">Releases</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<figure class="project-media" data-file="assets/mailros.jpg"><img src="assets/mailros.jpg" alt="Mailros artwork" loading="lazy" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Composition, production, mixing </p>
+<p>Six-track EP by Infra, released on Oscilla Sound’s LMNL series as LMNL007 on June 12, 2026.</p>
+<ul class="credits"><li>Artwork by Jelly Works Studio</li><li>Mastered by Ike Zwanikken</li></ul>
+</div>
+<div class="embed">
+<iframe class="bc" src="https://bandcamp.com/EmbeddedPlayer/album=2018087275/size=large/bgcol=333333/linkcol=4ec5ec/artwork=small/transparent=true/" height="310" loading="lazy" title="Mailros by Infra on Bandcamp"></iframe>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="selected-field-recordings-vol-1" data-genre="releases,field-recording">
+        <summary>
+          <span class="proj-year">2025</span>
+          <h3 class="proj-title">Selected Field Recordings: Vol. 1</h3>
+          <span class="proj-tags">Releases, Field Recording</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<figure class="project-media" data-file="assets/selected-field-recordings.jpg"><img src="assets/selected-field-recordings.jpg" alt="Artwork for Selected Field Recordings: Vol. 1" loading="lazy" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Recording, post-production</p>
+<p>A selection of favourites from my field recording collection. Released July 29, 2025.</p>
+</div>
+<div class="embed">
+<iframe class="bc" src="https://bandcamp.com/EmbeddedPlayer/album=329648010/size=large/bgcol=333333/linkcol=4ec5ec/artwork=small/transparent=true/" height="373" loading="lazy" title="Selected Field Recordings, Vol. 1 on Bandcamp"></iframe>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="youth-in-parts" data-genre="releases">
+        <summary>
+          <span class="proj-year">2025</span>
+          <h3 class="proj-title">Youth in Parts</h3>
+          <span class="proj-tags">Releases</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<figure class="project-media" data-file="assets/y-i-p.jpg"><img src="assets/y-i-p.jpg" alt="Youth in Parts artwork" loading="lazy" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Recording, production, mixing</p>
+<p>A collaboration between artist Jamie George and Infra. Released April 12, 2025.</p>
+</div>
+<div class="embed">
+<iframe class="bc" src="https://bandcamp.com/EmbeddedPlayer/track=636890107/size=large/bgcol=333333/linkcol=4ec5ec/tracklist=false/artwork=small/transparent=true/" height="120" loading="lazy" title="Youth in Parts on Bandcamp"></iframe>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="ante" data-genre="releases">
+        <summary>
+          <span class="proj-year">2024</span>
+          <h3 class="proj-title">Ante</h3>
+          <span class="proj-tags">Releases</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<figure class="project-media" data-file="assets/ante.jpg"><img src="assets/ante.jpg" alt="Ante artwork" loading="lazy" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Composition, production, mixing</p>
+<p>Released December 18, 2024.</p>
+<ul class="credits"><li>Vocals by Infra</li><li>Produced and mixed by Infra</li><li>Mastered by Addison</li><li>Artwork by <a href="https://www.instagram.com/multibrowser/" target="_blank" rel="noopener">@multibrowser</a></li></ul>
+</div>
+<div class="embed">
+<iframe class="bc" src="https://bandcamp.com/EmbeddedPlayer/album=3628258189/size=large/bgcol=333333/linkcol=4ec5ec/artwork=small/transparent=true/" height="241" loading="lazy" title="Ante by Infra on Bandcamp"></iframe>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="lmnl001" data-genre="releases">
+        <summary>
+          <span class="proj-year">2024</span>
+          <h3 class="proj-title">LMNL001</h3>
+          <span class="proj-tags">Releases</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<figure class="project-media" data-file="assets/lmnl-001.jpg"><img src="assets/lmnl-001.jpg" alt="LMNL001 artwork" loading="lazy" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Composition, production, mixing</p>
+<p>Track 1 on this Oscilla Sound compilation (Liminal VA 001). Released August 2, 2024.</p>
+<ul class="credits"><li>Artwork by Jelly Works</li><li>Mastered by Ike Zwanikken</li></ul>
+</div>
+<div class="embed">
+<iframe class="bc" src="https://bandcamp.com/EmbeddedPlayer/album=1354415406/size=large/bgcol=333333/linkcol=4ec5ec/artwork=small/track=2013653527/transparent=true/" height="208" loading="lazy" title="LMNL001 on Bandcamp"></iframe>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="for-the-dial-beckons" data-genre="sound-composition">
+        <summary>
+          <span class="proj-year">2023</span>
+          <h3 class="proj-title">For the Dial Beckons</h3>
+          <span class="proj-tags">Sound &amp; Composition</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<figure class="project-media" data-file="assets/ftdb.jpg"><img src="assets/ftdb.jpg" alt="Still from For the Dial Beckons" loading="lazy" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Composition, production, mixing</p>
+<p><a href="https://linnealangfjordkristensen.com/For-the-Dial-Beckons" target="_blank" rel="noopener">For the Dial Beckons</a> is a film work by Linnea Langfjord Kristensen, for which I made the sound and music.</p>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="lost-my-way" data-genre="releases">
+        <summary>
+          <span class="proj-year">2022</span>
+          <h3 class="proj-title">Lost my way</h3>
+          <span class="proj-tags">Releases</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<figure class="project-media" data-file="assets/lost-my-way.jpg"><img src="assets/lost-my-way.jpg" alt="Lost my way artwork" loading="lazy" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Composition, production, mixing</p>
+<p>Released December 9, 2022.</p>
+<ul class="credits"><li>Artwork by @multibrowser</li></ul>
+</div>
+<div class="embed">
+<iframe class="bc" src="https://bandcamp.com/EmbeddedPlayer/album=1504938171/size=large/bgcol=333333/linkcol=4ec5ec/artwork=small/transparent=true/" height="274" loading="lazy" title="Lost my way by Infra on Bandcamp"></iframe>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="qx-product-launch-video" data-genre="sound-composition">
+        <summary>
+          <span class="proj-year">2022</span>
+          <h3 class="proj-title">QX Product Launch Video</h3>
+          <span class="proj-tags">Sound &amp; Composition</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<figure class="project-media" data-file="assets/QX.jpg"><img src="assets/QX.jpg" alt="Installation view" loading="lazy" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Sound design, mixing</p>
+<p>Video work by Libby Heaney.</p>
+<blockquote>
+<p>“In The Evolution of Ent-: QX, Libby Heaney imagines QX, ‘Quantum eXperience’, a quantum computing company that parodies the hyperbolic language, commercial aesthetics, and unquenchable greed of Big Tech. [...]</p>
+<p>Lying beneath the corporate veneer are quantum glitches and slimy eruptions inviting viewers to consider the fluidity that underpins quantum computing as a way to move away from the binary and capitalist to a plural, shape-shifting landscape of deep interconnections.”</p>
+</blockquote>
+<p>Using stock music and a voiceover provided by the artist, I created a sound track that glitches, distorts and decays into noise as the video progresses. This work was part of <a href="https://www.arebyte.com/evolution-of-ent" target="_blank" rel="noopener"><i>The Evolution of Ent-: QX</i></a>, commissioned and exhibited by Arebyte Gallery in 2022.</p>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="the-real" data-genre="sound-composition">
+        <summary>
+          <span class="proj-year">2022</span>
+          <h3 class="proj-title">The Real</h3>
+          <span class="proj-tags">Sound &amp; Composition</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<figure class="project-media" data-file="assets/the-real.jpeg"><img src="assets/the-real.jpeg" alt="The Real in performance" loading="lazy" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Composition, production, mixing</p>
+<p>A play by Linnea Langfjord Kristensen, performed at the Cockpit Theatre, London, in September 2022.</p>
+<p>Directed by Alan Fielden and performed by Drew Sheridan-Wheeler, Lucy Spreckley, Henriette Laursen, Tom Cray and Meg Lake. I designed the sound.</p>
+</div>
+<div class="embed">
+<iframe width="100%" height="300" scrolling="no" allow="autoplay" loading="lazy" title="Selected Tracks from The Real on SoundCloud" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1514889454&amp;color=%23050404&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>
+<div class="sc-credit"><a href="https://soundcloud.com/jamiemaule" target="_blank" rel="noopener">JamieMaule</a> · <a href="https://soundcloud.com/jamiemaule/sets/selected-tracks-from-the-real" target="_blank" rel="noopener">Selected Tracks from The Real</a></div>
+<iframe class="video" src="https://www.youtube.com/embed/0U8itZ6Ve7o?si=e906ZYTGKNHvSC5z" title="The Real on YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="the-particular" data-genre="sound-composition">
+        <summary>
+          <span class="proj-year">2020</span>
+          <h3 class="proj-title">The Particular</h3>
+          <span class="proj-tags">Sound &amp; Composition</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Composition, production, recording, mixing</p>
+<p>A narrative sound work I made with Linnea Langfjord Kristensen in 2020.</p>
+<p>This work, mixed in third order ambisonics and rendered here binaurally, was featured at the Klingt Gut symposium in Hamburg in 2021 and won the award for Best Young Artist. Best heard on headphones.</p>
+</div>
+<div class="embed">
+<audio controls preload="none" src="assets/TheParticular_Binaural.mp3">Your browser does not support the audio element.</audio>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="the-fold" data-genre="sound-composition">
+        <summary>
+          <span class="proj-year">2019</span>
+          <h3 class="proj-title">The fold is a fold that makes two and more as it folds</h3>
+          <span class="proj-tags">Sound &amp; Composition</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<figure class="project-media" data-file="assets/fold.jpg"><img src="assets/fold.jpg" alt="Still from The fold is a fold" loading="lazy" onerror="this.parentNode.classList.add('missing');this.remove()"></figure>
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Composition, production, mixing</p>
+<p>Performance, research, workshop and poem by Linnea Langfjord Kristensen.</p>
+<p>A film with music I improvised.</p>
+</div>
+<div class="embed">
+<iframe class="video" src="https://player.vimeo.com/video/465718469?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" title="The fold is a fold that makes two and more as it folds"></iframe>
+</div>
+        </div>
+      </details>
+
+      </div>
+      </div>
+
+      <div class="work-block" id="podcast-block">
+      <h2 class="work-heading">Podcasts</h2>
+      <div class="work-list">
+      <details class="project" id="faith-at-the-frontiers" data-genre="podcasts">
+        <summary>
+          <span class="proj-year">2021–present</span>
+          <h3 class="proj-title">Faith at the Frontiers</h3>
+          <span class="proj-tags">Podcasts</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Video and audio post-production</p>
+<p>A podcast on challenges to the Christian faith. Hosted by Dr Barnabas Aspray and Dr Austin Stevenson.</p>
+<p>I edit and produce the sound. The podcast moved to video in the last year, and I now edit the picture as well.</p>
+<p>More: <a href="https://faithatthefrontiers.com/" target="_blank" rel="noopener">Faith at the Frontiers website</a> and <a href="https://www.youtube.com/@FaithattheFrontiers" target="_blank" rel="noopener">YouTube channel</a>.</p>
+</div>
+        </div>
+      </details>
+
+      <details class="project" id="deep-time" data-genre="podcasts">
+        <summary>
+          <span class="proj-year">2024</span>
+          <h3 class="proj-title">Deep Time</h3>
+          <span class="proj-tags">Podcasts</span>
+          <span class="proj-toggle">+</span>
+        </summary>
+        <div class="project-body">
+<div class="project-text">
+<p class="project-role"><span class="role-label">Role</span> Audio post-production</p>
+<p>A six-episode series of the William Temple Foundation Podcast, hosted by Tim Middleton.</p>
+<p>I edited and produced the sound.</p>
+</div>
+<div class="embed">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/62lpovpbbyaVZxAbccTmDw?utm_source=generator" height="352" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Deep Time on Spotify"></iframe>
+</div>
+        </div>
+      </details>
+
+      </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-row icons">
+      <a href="mailto:jamiejmaule@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6.5 8.5 7 8.5-7"/></svg></a>
+      <a href="https://jamiemaule.bandcamp.com" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
+      <a href="https://soundcloud.com/jamiemaule" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 14v2M5 12.5v3.5M7.5 11v5M10 10v6"/><path d="M12.5 16.5h6a3 3 0 0 0 .4-5.97A5.2 5.2 0 0 0 12.5 9z"/></svg></a>
+    </div>
+    <p class="copyright">© 2026 Jamie Maule</p>
+  </div>
+</footer>
+
+<script>
+  var projects = Array.prototype.slice.call(document.querySelectorAll('details.project'));
+  var filterBtns = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
+  var GENRES = filterBtns.map(function (b) { return b.getAttribute('data-filter'); });
+  var countEl = document.getElementById('count');
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('.work-block'));
+
+  // Show only projects with this genre (null = show all).
+  function applyFilter(key) {
+    var shown = 0;
+    projects.forEach(function (p) {
+      var tags = (p.getAttribute('data-genre') || '').split(',');
+      var show = !key || tags.indexOf(key) !== -1;
+      p.hidden = !show;
+      if (show) shown++;
+    });
+    filterBtns.forEach(function (b) {
+      var on = b.getAttribute('data-filter') === (key || 'all');
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    countEl.textContent = shown + (shown === 1 ? ' project' : ' projects');
+    blocks.forEach(function (b) { b.hidden = !b.querySelector('details.project:not([hidden])'); });
+  }
+
+  filterBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var key = b.getAttribute('data-filter');
+      key = key === 'all' ? null : key;
+      applyFilter(key);
+      try { history.replaceState(null, '', key ? '#' + key : location.pathname + location.search); } catch (e) {}
+      var first = blocks.filter(function (x) { return !x.hidden; })[0];
+      if (first) first.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Links: #releases applies a filter, #mailros opens that project.
+  function route() {
+    var id = location.hash.slice(1);
+    if (!id) { applyFilter(null); return; }
+    if (GENRES.indexOf(id) !== -1) { applyFilter(id); return; }
+    var el = document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') {
+      applyFilter(null);
+      el.open = true;
+      el.scrollIntoView();
+    }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  // Only one project open at a time: opening one closes the others.
+  projects.forEach(function (p) {
+    p.addEventListener('toggle', function () {
+      if (!p.open) return;
+      var before = p.getBoundingClientRect().top;
+      projects.forEach(function (other) { if (other !== p) other.open = false; });
+      // If a project above it just closed, the page shifts; keep this title where it was clicked.
+      var shift = p.getBoundingClientRect().top - before;
+      if (shift) window.scrollBy({ top: shift, behavior: 'instant' });
+    });
+  });
+
+</script>
+
+</body>
+</html>
